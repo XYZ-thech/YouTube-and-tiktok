@@ -1,11 +1,14 @@
 function embedVideo() {
+    console.log("embedVideo called");
     const videoUrl = document.getElementById('videoUrl').value;
+    console.log("URL: ",videoUrl);
     const videoContainer = document.getElementById('videoContainer');
     videoContainer.innerHTML = ''; // Clear any existing embed
 
     if (videoUrl.includes("youtube.com")) {
         // YouTube Embed Logic
         const videoId = extractYouTubeId(videoUrl);
+         console.log("YouTube ID extracted:", videoId);
         if (videoId) {
           const embedCode = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
           videoContainer.innerHTML = embedCode;
@@ -16,6 +19,7 @@ function embedVideo() {
 
     } else if (videoUrl.includes("tiktok.com")) {
       const tiktokId = extractTikTokId(videoUrl);
+      console.log("TikTok ID extracted:", tiktokId);
       if (tiktokId) {
           const embedCode = `<iframe src="https://www.tiktok.com/embed/${tiktokId}" width="320" height="480" frameborder="0" allowfullscreen></iframe>`;
            videoContainer.innerHTML = embedCode;
